@@ -1,0 +1,3 @@
+Hi I am yashwanth, This message is from Sync.js file.
+
+Append Method: This line is added using appendFileSync. 21/3/2026, 4:39:30 pm
