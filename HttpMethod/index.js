@@ -17,6 +17,9 @@ application.use(express.json());
 // store external API URL (avoid repeating the same string everywhere)
 const jsonData = 'https://jsonplaceholder.typicode.com/users';
 
+// cache variable → stores API data after first fetch
+let cachedUsers = null;
+
 
 /*
   GET /id
@@ -26,10 +29,14 @@ const jsonData = 'https://jsonplaceholder.typicode.com/users';
 application.get('/id', async (req, res) => {
     try {
         // call external API → sends request to JSONPlaceholder
-        const response = await axios.get(jsonData);
+        // reuse cached data if available
+        if (!cachedUsers) {
+            const response = await axios.get(jsonData);
+            cachedUsers = response.data;
+        }
 
         // axios returns full object → actual data is inside response.data
-        const users = response.data;
+        const users = cachedUsers;
 
         // loop through users array → pick only id from each user
         const userIds = users.map((user) => user.id);
@@ -55,10 +62,14 @@ application.get('/id', async (req, res) => {
 application.get('/users/username', async (req, res) => {
     try {
         // fetch users again from external API
-        const response = await axios.get(jsonData);
+        // reuse cached data if available
+        if (!cachedUsers) {
+            const response = await axios.get(jsonData);
+            cachedUsers = response.data;
+        }
 
         // extract actual users array
-        const users = response.data;
+        const users = cachedUsers;
 
         // loop through users → extract only username field
         const usernames = users.map((user) => user.username);

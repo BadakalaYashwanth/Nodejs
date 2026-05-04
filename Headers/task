@@ -1,0 +1,21 @@
+REST API - JSON
+
+GET/USER - List all the users - HTML Docuement Render 
+GET/API/USER - List all the user JSON - (Best Practise, for compatibilty work for all the devices)
+
+
+GET/API/USER/1 - Get the user id 1
+GET/API/USER/2 - Get the user id 2
+
+
+Dynamic Path Parameters 
+GET/api/users/:id
+:id--> Variable 
+
+
+
+POST/API/USER - Create new user 
+
+PATCH /API/USER - create or update user 
+DELETE /API/USER - delete user
+

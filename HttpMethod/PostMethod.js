@@ -11,17 +11,22 @@ const jsonData = 'https://jsonplaceholder.typicode.com/users';
 /*
   POST /users
   Purpose: create a new user
-  Runs when client sends request to: http://localhost:8005/users
+  Runs when client sends request to: http://localhost:8006/users
 */
 app.post('/users', async (req, res) => {
     try {
         // req.body → contains data sent by client in JSON format
         // example: { name: "Yaswanth", username: "yash", email: "test@mail.com" }
-        const newUser = req.body;
+        const { name, username, email } = req.body;
+
+        // basic validation → reject bad input early
+        if (!name || !username || !email) {
+            return res.status(400).json({ error: 'All fields are required' });
+        }
 
         // send POST request to external API
         // this sends newUser data to JSONPlaceholder server
-        const response = await axios.post(jsonData, newUser);
+        const response = await axios.post(jsonData, { name, username, email });
 
         // axios returns full response object
         // actual created user is inside response.data
@@ -39,7 +44,6 @@ app.post('/users', async (req, res) => {
     }
 });
 
-
 app.listen(port, ()=>{
     console.log(`Server Online ${port}`);
-})
+});
