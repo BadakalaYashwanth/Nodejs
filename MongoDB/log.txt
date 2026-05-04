@@ -42,3 +42,33 @@
 3/5/2026, 5:27:22 pm: ::1 GET: /api/users
 
 3/5/2026, 5:27:44 pm: ::1 GET: /api/users
+
+4/5/2026, 2:33:30 pm: ::1 POST: /api/users/
+
+4/5/2026, 2:35:25 pm: ::1 POST: /api/users/
+
+4/5/2026, 2:42:45 pm: ::1 POST: /api/users/
+
+4/5/2026, 2:44:43 pm: ::1 POST: /api/users/
+
+4/5/2026, 2:48:22 pm: ::1 GET: /users
+
+4/5/2026, 2:48:22 pm: ::1 GET: /favicon.ico
+
+4/5/2026, 2:48:36 pm: ::1 GET: /users
+
+4/5/2026, 2:48:59 pm: ::1 GET: /users
+
+4/5/2026, 2:49:18 pm: ::1 GET: /users
+
+4/5/2026, 2:49:19 pm: ::1 GET: /users
+
+4/5/2026, 2:49:20 pm: ::1 GET: /users
+
+4/5/2026, 2:49:20 pm: ::1 GET: /users
+
+4/5/2026, 2:49:31 pm: ::1 GET: /users
+
+4/5/2026, 2:56:36 pm: ::1 GET: /api/users/69f8615526d7a433e91a2d6d
+
+4/5/2026, 2:57:34 pm: ::1 GET: /api/users/69f8615526d7a433e91a2d6d
