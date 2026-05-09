@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: tahoma, 'Geneva', Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!--The method means the type of request it will send-->
+    <!--The action means the URL where it will send the request-->
+    <h1>URL Shortener</h1>
+
+    <% if (locals.id) { %>
+        <p>URL Generated: <a href="http://localhost:8001/<%= id %>" target="_blank">http://localhost:8001/<%= id %></a>
+        </p>
+        <% } %>
+
+            <div>
+                <form method="POST" action="/url">
+                    <label>Enter Your Original URL</label>
+                    <!-- Name is changed to "url" to match req.body.url expected by the controller -->
+                    <input type="text" placeholder="https://example.com" name="url">
+                    <button type="submit">Generate</button>
+                </form>
+            </div>
+
+            <!-- Iterate over the urls array passed from the server to display them -->
+            <% if (locals.urls && urls.length> 0) { %>
+                <div style="margin-top: 20px;">
+                    <h2>Generated URLs</h2>
+                    <table border="1" cellpadding="8" style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Short ID</th>
+                                <th>Original URL</th>
+                                <th>Clicks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% urls.forEach((u, index)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td><a href="http://localhost:8001/<%= u.shortID %>" target="_blank">
+                                            <%= u.shortID %>
+                                        </a></td>
+                                    <td>
+                                        <%= u.redirectURL %>
+                                    </td>
+                                    <td>
+                                        <%= u.visitHistory.length %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+</body>
+
+</html>
