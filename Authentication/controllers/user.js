@@ -26,7 +26,7 @@ async function handleLogin(req, res) {
             error: "Invalid Email or Password",
         });
     }
-    const isMatch = await bcrypt.compare(user.password, password);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
         return res.render("login", {
             error: "Invalid Email or Password",
